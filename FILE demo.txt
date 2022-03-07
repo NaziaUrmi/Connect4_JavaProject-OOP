@@ -1,0 +1,60 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package read.file;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+/**
+ *
+ * @author sharm
+ */
+public class ReadFile {
+
+    /**
+     * @param args the command line arguments
+     */
+    public void readInput()
+    {
+        BufferedReader br = null;
+        String line = "";
+        try {
+            br = new BufferedReader(new FileReader("input.txt"));
+            while ((line = br.readLine()) != null)
+            {
+                //System.out.println(line);
+                String [] s= line.split(" ");
+                System.out.println("Id"+" "+s[0]+ " CGPA: "+s[2]);
+                
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            
+        }
+    }
+    public void writeOutput()
+    {
+        try{
+            PrintWriter writer = new PrintWriter("output.txt", "UTF-8");
+            writer.println("The first line");
+            writer.println("The second line");
+            writer.close();
+        } catch (Exception ex) {
+           ex.printStackTrace();
+        }
+    }
+    public static void main(String[] args) {
+        // TODO code application logic here
+        ReadFile r= new ReadFile();
+        r.readInput();
+        r.writeOutput();
+    }
+    
+}
